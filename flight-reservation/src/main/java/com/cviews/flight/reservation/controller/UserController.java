@@ -28,6 +28,11 @@ public class UserController {
         return "/login/registerUser";
     }
 
+    @RequestMapping("/showLogin")
+    public String showLoginPage() {
+        return "/login/login";
+    }
+
     @RequestMapping(value = "registerUser", method = RequestMethod.POST)
     public String register(@ModelAttribute(value = "user") User user) {
         LOGGER.info("User: {}", user);
@@ -37,7 +42,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestParam("email") String email, @RequestParam("password") String password, ModelMap modelMap) {
+    public String login(@RequestParam("username") String email, @RequestParam("password") String password, ModelMap modelMap) {
+        LOGGER.info("User:{} Password:{}", email, password);
+
         User user = userRepository.findByEmail(email);
 
         if (user != null && user.getPassword().equals(password)) {
