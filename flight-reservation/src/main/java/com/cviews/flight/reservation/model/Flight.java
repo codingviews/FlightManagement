@@ -1,8 +1,10 @@
 package com.cviews.flight.reservation.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.cviews.flight.reservation.util.LocalDateAttributeConverter;
+import com.cviews.flight.reservation.util.LocalDateTimeAttributeConverter;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -13,15 +15,22 @@ import java.util.StringJoiner;
 public class Flight extends AbstractEntity {
     @Column(name = "FLIGHT_NUMBER")
     private String flightNumber;
+
     @Column(name = "OPERATING_AIRLINES")
     private String operatingAirlines;
+
     @Column(name = "DEPARTURE_CITY")
     private String departureCity;
+
     @Column(name = "ARRIVAL_CITY")
     private String arrivalCity;
+
     @Column(name = "DATE_OF_DEPARTURE")
+    @Convert(converter = LocalDateAttributeConverter.class)
     private LocalDate dateOfDeparture;
+
     @Column(name = "ESTIMATED_DEPARTURE_TIME")
+    @Convert(converter = LocalDateTimeAttributeConverter.class)
     private LocalDateTime estimatedDepartureTime;
 
     public String getFlightNumber() {

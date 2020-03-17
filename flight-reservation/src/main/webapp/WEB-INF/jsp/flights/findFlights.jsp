@@ -5,6 +5,12 @@
     <jsp:include page="../include.jsp" />
     <meta charset="UTF-8">
     <title>Find Flights</title>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#departureDate').datetimepicker();
+        });
+    </script>
 </head>
 <body>
 
@@ -16,13 +22,14 @@
     <label class="sr-only" for="fromCity">From:</label>
     <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="fromCity" name="fromCity" placeholder="From">
 
-    <label class="sr-only" for="inlineFormInputGroup">To:</label>
+    <label class="sr-only" for="toCity">To:</label>
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-        <input type="text" class="form-control" id="inlineFormInputGroup" name="toCity" placeholder="To">
+        <input type="text" class="form-control" id="toCity" name="toCity" placeholder="To">
     </div>
 
+    <label class="sr-only" for="departureDate">To:</label>
     <div class="input-group date" data-provide="datepicker">
-        <input type="text" class="form-control" name="departureDate">
+        <input type="text" class="form-control" id="departureDate" name="departureDate">
         <div class="input-group-addon">
             <span class="glyphicon glyphicon-th"></span>
         </div>

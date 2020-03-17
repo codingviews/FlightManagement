@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+  http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+  <changeSet author="jimmye" id="flight_1.1">
+    <sql>
+      INSERT INTO FLIGHT VALUES(1, 'AA1','American Airlines', 'AUS', 'NYC', STR_TO_DATE('02-05-2020', '%m-%d-%Y'), '2020-03-05 03:14:07');
+      INSERT INTO FLIGHT VALUES(2, 'AA2','American Airlines', 'AUS', 'NYC', STR_TO_DATE('02-05-2020', '%m-%d-%Y'), '2020-03-05 03:14:08');
+      INSERT INTO FLIGHT VALUES(3, 'AA3','American Airlines', 'AUS', 'NYC', STR_TO_DATE('02-05-2020', '%m-%d-%Y'), '2020-03-05 03:14:08');
+      INSERT INTO FLIGHT VALUES(4, 'SW1','South West Airlines', 'AUS', 'NYC', STR_TO_DATE('02-05-2020', '%m-%d-%Y'), '2020-03-05 03:14:08');
+      INSERT INTO FLIGHT VALUES(5, 'UA1','United Airlines', 'NYC', 'DAL', STR_TO_DATE('02-05-2020', '%m-%d-%Y'), '2020-03-05 03:14:08');
+      INSERT INTO FLIGHT VALUES(6, 'UA1','United Airlines', 'NYC', 'DAL', STR_TO_DATE('02-06-2020', '%m-%d-%Y'), '2020-03-05 03:14:08');
+      INSERT INTO FLIGHT VALUES(7, 'SW1','South West Airlines', 'AUS', 'NYC', STR_TO_DATE('02-06-2020', '%m-%d-%Y'), '2020-03-05 07:14:08');
+      INSERT INTO FLIGHT VALUES(8, 'SW2','South West Airlines', 'AUS', 'NYC', STR_TO_DATE('02-06-2020', '%m-%d-%Y'), '2020-03-05 07:14:08');
+      INSERT INTO FLIGHT VALUES(9, 'SW3','South West Airlines', 'AUS', 'NYC', STR_TO_DATE('02-06-2020', '%m-%d-%Y'), '2020-03-05 07:14:08');
+      INSERT INTO FLIGHT VALUES(10, 'UA1','United Airlines', 'NYC', 'DAL', STR_TO_DATE('02-07-2020', '%m-%d-%Y'), '2020-03-05 03:14:08');
+    </sql>
+    <rollback>
+      TRUNCATE TABLE FLIGHT;
+    </rollback>
+  </changeSet>
+</databaseChangeLog>
