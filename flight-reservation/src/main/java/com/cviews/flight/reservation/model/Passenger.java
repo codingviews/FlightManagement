@@ -60,6 +60,49 @@ public class Passenger extends AbstractEntity {
         this.phone = phone;
     }
 
+    public static class Builder {
+        private String firstName;
+        private String middleName;
+        private String lastName;
+        private String email;
+        private String phone;
+
+        public Builder firstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder middleName(String middleName) {
+            this.middleName = middleName;
+            return this;
+        }
+
+        public Builder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder email(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder phone(String phone) {
+            this.phone = phone;
+            return this;
+        }
+
+        public Passenger build() {
+            Passenger passenger = new Passenger();
+            passenger.setFirstName(this.firstName);
+            passenger.setMiddleName(this.middleName);
+            passenger.setLastName(this.lastName);
+            passenger.setEmail(this.email);
+            passenger.setPhone(this.phone);
+            return passenger;
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

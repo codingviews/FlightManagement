@@ -64,6 +64,49 @@ public class Reservation extends AbstractEntity {
         this.created = created;
     }
 
+    public static class Builder {
+        private Boolean checkedIn;
+        private Integer numberOfBags;
+        private Passenger passenger;
+        private Flight flight;
+        private LocalDateTime created;
+
+        public Builder checkedIn(Boolean checkedIn) {
+            this.checkedIn = checkedIn;
+            return this;
+        }
+
+        public Builder numberOfBags(Integer numberOfBags) {
+            this.numberOfBags = numberOfBags;
+            return this;
+        }
+
+        public Builder passenger(Passenger passenger) {
+            this.passenger = passenger;
+            return this;
+        }
+
+        public Builder flight(Flight flight) {
+            this.flight = flight;
+            return this;
+        }
+
+        public Builder created(LocalDateTime created) {
+            this.created = created;
+            return this;
+        }
+
+        public Reservation build() {
+            Reservation reservation = new Reservation();
+            reservation.setCheckedIn(this.checkedIn);
+            reservation.setNumberOfBags(this.numberOfBags);
+            reservation.setPassenger(this.passenger);
+            reservation.setFlight(this.flight);
+            reservation.setCreated(this.created);
+            return reservation;
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

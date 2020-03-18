@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -28,13 +26,13 @@ public class FlightController {
         this.flightRepository = flightRepository;
     }
 
-    @RequestMapping(value = "findFlights", method = RequestMethod.GET)
-    public String findFlights(@RequestParam("fromCity") String fromCity, @RequestParam("toCity") String toCity, @RequestParam("departureDate") @DateTimeFormat(pattern = "yyyy-MM-d") Date departureDate, ModelMap modelMap) {
+    @RequestMapping(value = "/findFlights", method = RequestMethod.GET)
+    public String findFlights(@RequestParam("fromCity") String fromCity, @RequestParam("toCity") String toCity, @RequestParam("departureDate") @DateTimeFormat(pattern = "MM-d-yyyy") Date departureDate, ModelMap modelMap) {
         LOGGER.info("FromCity:{}, ToCity:{}, DepartureDate:{}", fromCity, toCity, departureDate);
 
-        LocalDate departureLocalDate = departureDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        //LocalDate departureLocalDate = departureDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-        List<Flight> flights = flightRepository.findFlight(fromCity, toCity, departureLocalDate);
+        List<Flight> flights = flightRepository.findFlight(fromCity, toCity, departureDate);
         LOGGER.info("Flights: {}", flights);
 
         modelMap.addAttribute("flights", flights);

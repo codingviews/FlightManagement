@@ -1,12 +1,12 @@
 package com.cviews.flight.reservation.model;
 
-import com.cviews.flight.reservation.util.LocalDateAttributeConverter;
-import com.cviews.flight.reservation.util.LocalDateTimeAttributeConverter;
-import org.hibernate.annotations.Type;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 import java.util.StringJoiner;
 
@@ -26,12 +26,10 @@ public class Flight extends AbstractEntity {
     private String arrivalCity;
 
     @Column(name = "DATE_OF_DEPARTURE")
-    @Convert(converter = LocalDateAttributeConverter.class)
-    private LocalDate dateOfDeparture;
+    private Date dateOfDeparture;
 
     @Column(name = "ESTIMATED_DEPARTURE_TIME")
-    @Convert(converter = LocalDateTimeAttributeConverter.class)
-    private LocalDateTime estimatedDepartureTime;
+    private Timestamp estimatedDepartureTime;
 
     public String getFlightNumber() {
         return flightNumber;
@@ -65,19 +63,19 @@ public class Flight extends AbstractEntity {
         this.arrivalCity = arrivalCity;
     }
 
-    public LocalDate getDateOfDeparture() {
+    public Date getDateOfDeparture() {
         return dateOfDeparture;
     }
 
-    public void setDateOfDeparture(LocalDate dateOfDeparture) {
+    public void setDateOfDeparture(Date dateOfDeparture) {
         this.dateOfDeparture = dateOfDeparture;
     }
 
-    public LocalDateTime getEstimatedDepartureTime() {
+    public Timestamp getEstimatedDepartureTime() {
         return estimatedDepartureTime;
     }
 
-    public void setEstimatedDepartureTime(LocalDateTime estimatedDepartureTime) {
+    public void setEstimatedDepartureTime(Timestamp estimatedDepartureTime) {
         this.estimatedDepartureTime = estimatedDepartureTime;
     }
 
